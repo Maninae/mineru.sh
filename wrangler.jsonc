@@ -1,0 +1,11 @@
+{
+  // Assets-only Worker: serves site/ as static files, no server code.
+  // Validate:  npx wrangler deploy --dry-run
+  // Deploy:    npx wrangler deploy   (CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID in env)
+  "name": "mineru-sh",
+  "compatibility_date": "2026-09-27",
+  "workers_dev": false,
+  "assets": {
+    "directory": "./site"
+  }
+}

@@ -1,0 +1,129 @@
+/* mineru.sh: one screen. The eye lands on the name, then the one-line "what",
+   then three short facts. Chrome stays small and gray; the accent (fox orange)
+   appears exactly twice: the blinking cursor and the fox mark. */
+
+:root {
+  --paper: #f5efe4;
+  --ink: #1c1915;
+  --ink-soft: #5f584e;
+  --ink-faint: #a39a8c;
+  --fox: #d3651f;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151311;
+    --ink: #ece4d6;
+    --ink-soft: #a89f90;
+    --ink-faint: #6b6358;
+    --fox: #e8842f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 300;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+}
+
+main {
+  width: 100%;
+  max-width: 34rem;
+}
+
+.prompt {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+
+.prompt .dim { color: var(--ink-faint); }
+
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.15em;
+  vertical-align: -0.15em;
+  background: var(--fox);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+}
+
+h1 {
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  font-weight: 500;
+  font-variation-settings: "opsz" 144;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0 0 0.75rem;
+}
+
+.lede {
+  font-size: clamp(1.2rem, 3.2vw, 1.5rem);
+  margin: 0 0 2.5rem;
+  text-wrap: balance;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.9rem;
+  margin: 0 0 3rem;
+  font-size: 1.05rem;
+}
+
+.facts dt {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  padding-top: 0.3rem;
+}
+
+.facts dd { margin: 0; }
+
+footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+footer p { margin: 0; max-width: 26rem; }
+
+footer a {
+  color: inherit;
+  text-decoration-color: var(--ink-faint);
+  text-underline-offset: 0.18em;
+}
+
+footer a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+
+.fox { flex: none; opacity: 0.9; }
+
+@media (max-width: 420px) {
+  .facts { grid-template-columns: 1fr; row-gap: 0.25rem; }
+  .facts dd { margin-bottom: 0.75rem; }
+}
