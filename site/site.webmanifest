@@ -1,0 +1,13 @@
+{
+  "name": "mineru",
+  "short_name": "mineru",
+  "description": "A personal AI assistant that lives on your own Mac.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#1a183a",
+  "theme_color": "#1a183a",
+  "icons": [
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

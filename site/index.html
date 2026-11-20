@@ -3,41 +3,128 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mineru</title>
-  <meta name="description" content="Mineru is a personal AI assistant that lives on your own machine: plain-file memory, recurring jobs, and a Telegram conversation.">
+  <title>mineru: a personal AI assistant that lives on your own Mac</title>
+  <meta name="description" content="Mineru is an open-source personal AI assistant that runs on your own Mac: scheduled briefs over Telegram, plain-file memory it tidies overnight, and careful access to your mail, calendar, and messages.">
   <link rel="canonical" href="https://mineru.sh/">
-  <meta property="og:title" content="Mineru">
-  <meta property="og:description" content="A personal AI assistant that lives on your own machine.">
+  <meta property="og:title" content="mineru">
+  <meta property="og:description" content="A personal AI assistant that lives on your own Mac. The engine is public. Your life stays on your machine.">
   <meta property="og:url" content="https://mineru.sh/">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#f5efe4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#151311" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="fox.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=JetBrains+Mono:wght@400&display=swap">
-  <link rel="stylesheet" href="style.css">
+  <meta property="og:image" content="https://mineru.sh/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The mineru fox logo drawn in mint and violet command text, beside a terminal running mineru setup.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1a183a">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <header class="hero">
+    <img class="emblem" src="/emblem.webp" width="1040" height="1036" alt="The mineru fox: two curved strokes, mint fading to violet, filled with tiny mineru commands.">
+    <div class="hero-text">
+      <h1>mineru</h1>
+      <p class="lede">A personal AI assistant that lives on your own Mac.</p>
+      <p class="sub">Wake up to a message from an assistant who already read your inbox. The engine is public. Your life stays on your machine.</p>
+      <div class="terminal" aria-label="Example terminal session">
+        <div><span class="prompt">&gt;</span> mineru setup</div>
+        <div class="output">profile hydrated into ~/.mineru</div>
+        <div><span class="prompt">&gt;</span> mineru memory warm-resume</div>
+        <div><span class="prompt">&gt;</span> mineru cron status<span class="cursor" aria-hidden="true"></span></div>
+      </div>
+      <p class="actions">
+        <a class="button" href="https://github.com/Maninae/mineru-assistant">Get it on GitHub</a>
+        <span class="meta">MIT · macOS · Python 3.9+</span>
+      </p>
+    </div>
+  </header>
+
   <main>
-    <p class="prompt" aria-hidden="true"><span class="dim">~ $</span> mineru<span class="cursor"></span></p>
+    <section class="demo" aria-labelledby="demo-title">
+      <p class="eyebrow">07:00</p>
+      <h2 id="demo-title">The morning brief is already there.</h2>
+      <img src="/morning-brief.webp" width="1440" height="1128" loading="lazy" alt="A Telegram chat. Mineru's morning brief lists today's calendar, three things that need attention, and what can be skipped. The user asks what's on today and gets a two-line answer.">
+      <p class="caption">What arrives in the morning, and what happens when you ask it something. Sample data.</p>
+    </section>
 
-    <h1>Mineru</h1>
-    <p class="lede">A personal AI assistant that lives on your own machine.</p>
+    <section aria-labelledby="does-title">
+      <p class="eyebrow">by day</p>
+      <h2 id="does-title">It reads, remembers, and reports.</h2>
+      <dl class="facts">
+        <dt>briefs</dt>
+        <dd>A morning brief, a news digest, inbox triage, weekly transactions, one curiosity question a day. Keep the ones you want.</dd>
+        <dt>accounts</dt>
+        <dd>Gmail, Calendar, Drive, iMessage, Slack, a browser, your finances. Reads pass a prompt-injection firewall. Anything that sends or changes something waits for your go.</dd>
+        <dt>memory</dt>
+        <dd>Plain Markdown in git. Searchable from your terminal, readable and editable without the assistant.</dd>
+        <dt>web app</dt>
+        <dd>A private page on your own network: every brief, your library, a monitor for each scheduled job.</dd>
+        <dt>watchdog</dt>
+        <dd>Checks the Mac every five minutes and messages you when a job hangs, stops firing, or memory runs short.</dd>
+        <dt>private</dt>
+        <dd>This engine is public. Your identity, memory, and secrets live in a separate folder you own. Secrets stay in the macOS Keychain.</dd>
+      </dl>
+    </section>
 
-    <dl class="facts">
-      <dt>memory</dt>
-      <dd>Plain Markdown files, versioned in git. Readable and editable without the assistant.</dd>
-      <dt>jobs</dt>
-      <dd>A morning brief, inbox triage, a finance check, and whatever else you put on the schedule.</dd>
-      <dt>talk</dt>
-      <dd>A conversation over Telegram by day. Memory consolidation by night.</dd>
-    </dl>
+    <section aria-labelledby="night-title">
+      <p class="eyebrow">by night</p>
+      <h2 id="night-title">It dreams while you sleep.</h2>
+      <p class="intro">A model wakes up blank every session. So overnight, scheduled jobs replay the day, keep what matters, and repair the assistant's own notes and instructions. Memory lives in git, so a bad edit is one revert away.</p>
+      <ol class="night">
+        <li>
+          <time>22:00</time>
+          <div><h3>Alignment <span class="when">twice a week</span></h3>
+          <p>Audits its own instructions and skills for contradictions and stale claims. Applies the clear fixes and brings you the real decisions, five at most.</p></div>
+        </li>
+        <li>
+          <time>22:30</time>
+          <div><h3>Dedup <span class="when">weekly</span></h3>
+          <p>Reads all of memory at once and hunts for duplicates and contradictions. Names, dates, family, and money are flagged for you, never edited.</p></div>
+        </li>
+        <li>
+          <time>01:00</time>
+          <div><h3>Consolidation <span class="when">nightly</span></h3>
+          <p>Turns yesterday's raw conversations into one clean, tagged daily note.</p></div>
+        </li>
+        <li>
+          <time>01:30</time>
+          <div><h3>Descriptions <span class="when">nightly</span></h3>
+          <p>Keeps a one-line summary and tags on every memory file, so the next session knows what to open.</p></div>
+        </li>
+        <li>
+          <time>02:27</time>
+          <div><h3>Deep consolidation <span class="when">weekly</span></h3>
+          <p>Reviews the whole week against everything it knows, updates the long-term notes, and writes you a report.</p></div>
+        </li>
+        <li>
+          <time>07:00</time>
+          <div><h3>Morning brief <span class="when">daily</span></h3>
+          <p>And then it tells you what today holds.</p></div>
+        </li>
+      </ol>
+    </section>
 
-    <footer>
-      <p>Built by <a href="https://github.com/Maninae">Owen Wang</a>. The engine opens on GitHub soon.</p>
-      <img class="fox" src="fox.svg" alt="" width="28" height="28">
-    </footer>
+    <section aria-labelledby="get-title">
+      <p class="eyebrow">get it</p>
+      <h2 id="get-title">Four commands, then say hello.</h2>
+      <pre class="install"><code><span class="prompt">&gt;</span> git clone https://github.com/Maninae/mineru-assistant.git
+<span class="prompt">&gt;</span> cd mineru-assistant &amp;&amp; python3 -m venv .venv &amp;&amp; source .venv/bin/activate
+<span class="prompt">&gt;</span> pip install -e .
+<span class="prompt">&gt;</span> mineru setup</code></pre>
+      <p class="intro">Setup asks for a name, a persona, and a time zone, then walks you through the secrets it needs: a Telegram bot token, Google access, a Claude Code login. Message your bot <q>what's on today?</q> and it answers.</p>
+      <p class="note">It runs its author's assistant every day. Setting up a fresh one is the part still being smoothed, so expect rough edges and <a href="https://github.com/Maninae/mineru-assistant/issues">say so in an issue</a>.</p>
+    </section>
   </main>
+
+  <footer>
+    <img src="/favicon-32.png" width="24" height="24" alt="">
+    <p>Built by <a href="https://github.com/Maninae">Owen Wang</a> for one household, and shared in case yours wants one too.</p>
+    <p class="links"><a href="https://github.com/Maninae/mineru-assistant">GitHub</a> · <a href="https://github.com/Maninae/mineru-assistant/blob/main/ARCHITECTURE.md">Architecture</a> · <a href="https://github.com/Maninae/mineru-assistant/blob/main/LICENSE">MIT</a></p>
+  </footer>
 </body>
 </html>

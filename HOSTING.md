@@ -2,7 +2,7 @@
 
 - **Registrar + DNS:** Cloudflare (registered 2026-09-16, renews yearly). Registrar lock on by default (`clientTransferProhibited`).
 - **Hosting:** Cloudflare Workers static assets, Worker name `mineru-sh`, deployed with `npx wrangler deploy` from this repo. `workers_dev` is off so the site only answers on the custom domain.
-- **Canonical host:** the apex `mineru.sh`. `www.mineru.sh` 301-redirects to the apex.
+- **Canonical host:** the apex `mineru.sh`. A `www.mineru.sh` redirect is not set up yet.
 
 ## Deploy
 
@@ -20,10 +20,10 @@ Then attach the custom domain: Worker `mineru-sh` > Settings > Domains & Routes 
 | Item | Where | State |
 |---|---|---|
 | Registrar lock | Registrar > Manage domains | on by default |
-| DNSSEC | Zone > DNS > Settings > Enable DNSSEC (Cloudflare publishes the DS for Registrar domains, 1-2 days) | pending |
+| DNSSEC | Zone > DNS > Settings > Enable DNSSEC (Cloudflare publishes the DS for Registrar domains, 1-2 days) | active since 2026-10-20 |
 | Account 2FA | My Profile > Authentication | human-only |
-| Always Use HTTPS | Zone > SSL/TLS > Edge Certificates | pending |
-| No-mail records | DNS: `MX @ 0 .` (null MX), `TXT @ "v=spf1 -all"`, `TXT _dmarc "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s"` | pending |
+| Always Use HTTPS | Zone > SSL/TLS > Edge Certificates | on since 2026-10-17 |
+| No-mail records | DNS: `MX @ 0 .` (null MX), `TXT @ "v=spf1 -all"`, `TXT _dmarc "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s"` | set 2026-10-17 |
 
 ## Token scope (for terminal automation)
 
