@@ -3,7 +3,7 @@
 Landing page for the Mineru personal assistant, served at https://mineru.sh from Cloudflare Workers static assets.
 
 - **Design intent:** the page is the engine README's banner, extended. The eye lands on the fox emblem and the `mineru` wordmark, then reads down: the 07:00 morning-brief screenshot, what it does by day, the night timeline of memory jobs, the install commands.
-- **Palette and type:** navy ground `#1a183a`, cool white ink, mint `#7fe9d8` for prompts, labels and links. One font, JetBrains Mono, self-hosted in `site/fonts/` so the page makes no third-party requests. Dark only; the navy is the brand.
+- **Palette and type:** navy ground `#1a183a`, cool white ink, mint `#7fe9d8` for prompts, labels and links. One font, JetBrains Mono, self-hosted in `site/fonts/` so no font provider sees visitors. (Cloudflare adds its Web Analytics beacon at the edge; that is a zone setting, not part of this repo.) Dark only; the navy is the brand.
 - **Gradient discipline:** the mint-to-violet gradient appears twice only, on the emblem and on the night timeline's spine. Do not add it to buttons, headings or borders.
 - **Files:** everything deployable is in `site/`. `wrangler.jsonc` at the root points Workers at it. No build step, no framework, no JS.
 - **Images:** `tools/build_assets.py` rebuilds `emblem.webp`, `morning-brief.webp`, `og.jpg` and the icon set from the engine repo's `assets/banner/` and `assets/demo/`. Re-run it when the banner or the demo screenshot changes there.

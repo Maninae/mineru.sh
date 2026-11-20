@@ -1,6 +1,6 @@
 # mineru.sh
 
-The landing page for [Mineru](https://mineru.sh), a personal AI assistant that lives on your own machine. One static page, no build step, no JavaScript, no third-party requests.
+The landing page for [Mineru](https://mineru.sh), a personal AI assistant that lives on your own machine. One static page, no build step. The page ships no JavaScript and hosts its own font; the only outside request is the Cloudflare Web Analytics beacon that Cloudflare adds at the edge.
 
 - `site/` is the whole site: `index.html`, `style.css`, the images, and a self-hosted copy of JetBrains Mono (SIL Open Font License, `site/fonts/OFL.txt`).
 - `tools/build_assets.py` rebuilds the images from the engine repo's banner and demo sources.
